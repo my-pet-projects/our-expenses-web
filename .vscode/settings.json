@@ -1,0 +1,52 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+    "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.type": "newLineEachExpressionAfterCountLimitExceptIfOnlyOne",
+    "importSorter.sortConfiguration.removeUnusedImports": true,
+    "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+    "importSorter.sortConfiguration.customOrderingRules.rules": [
+        {
+            "type": "importMember",
+            "regex": "^$",
+            "orderLevel": 100
+        },
+        {
+            "regex": "^[.]",
+            "orderLevel": 40
+        },
+        {
+            "regex": "^(src)",
+            "orderLevel": 35
+        }
+    ],
+    "cSpell.words": [
+        "antd",
+        "anticon",
+        "Appstore",
+        "browserslist",
+        "camelcase",
+        "dinero",
+        "esnext",
+        "Formik",
+        "gcloud",
+        "hoverable",
+        "Interop",
+        "loglevel",
+        "middlewares",
+        "nivo",
+        "onstatechange",
+        "onupdatefound",
+        "Parens",
+        "precached",
+        "serviceworker",
+        "Submenu",
+        "Unmount"
+    ]
+}

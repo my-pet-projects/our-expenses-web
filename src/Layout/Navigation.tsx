@@ -1,7 +1,8 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import clsx from 'clsx';
 import { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const user = {
   name: 'Tom Cook',
@@ -10,11 +11,10 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
 };
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false }
+  { name: 'Home', href: '/' },
+  { name: 'Categories', href: '/app/categories' },
+  { name: 'Expenses', href: '/app/expenses' },
+  { name: 'Reports', href: '/app/reports' }
 ];
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -30,27 +30,25 @@ export const Navigation = (): JSX.Element => (
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
+                <img className="h-8 w-8" src="/piggy.svg" alt="Workflow" />
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navigation.map((item) => (
-                    <a
+                    <NavLink
                       key={item.name}
-                      href={item.href}
-                      className={clsx(
-                        item.current
-                          ? 'bg-gray-900 text-white'
-                          : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'px-3 py-2 rounded-md text-sm font-medium'
-                      )}
+                      to={item.href}
+                      className={({ isActive }): string =>
+                        clsx(
+                          isActive
+                            ? 'bg-gray-900 text-white'
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'px-3 py-2 rounded-md text-sm font-medium'
+                        )
+                      }
                     >
                       {item.name}
-                    </a>
+                    </NavLink>
                   ))}
                 </div>
               </div>
@@ -116,18 +114,21 @@ export const Navigation = (): JSX.Element => (
         <Disclosure.Panel className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navigation.map((item) => (
-              <Disclosure.Button
-                key={item.name}
-                as="a"
-                href={item.href}
-                className={clsx(
-                  item.current
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-              >
-                {item.name}
+              <Disclosure.Button key={item.name} as={Fragment}>
+                <NavLink
+                  key={item.name}
+                  to={item.href}
+                  className={({ isActive }): string =>
+                    clsx(
+                      isActive
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block px-3 py-2 rounded-md text-base font-medium'
+                    )
+                  }
+                >
+                  {item.name}
+                </NavLink>
               </Disclosure.Button>
             ))}
           </div>
@@ -148,13 +149,6 @@ export const Navigation = (): JSX.Element => (
                   {user.email}
                 </div>
               </div>
-              <button
-                type="button"
-                className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-              >
-                <span className="sr-only">View notifications</span>
-                <BellIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
             </div>
             <div className="mt-3 px-2 space-y-1">
               {userNavigation.map((item) => (

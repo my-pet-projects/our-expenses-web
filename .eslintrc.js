@@ -1,22 +1,33 @@
 module.exports = {
+  root: true,
   env: {
+    browser: true,
     es6: true,
     jest: true,
-    node: true,
-    browser: true,
-    serviceworker: true
-  },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2021
+    node: true
   },
   extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended'
+    'plugin:@typescript-eslint/recommended'
   ],
-  plugins: ['react-hooks'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
+    ecmaFeatures: {
+      arrowFunctions: true
+    }
+  },
+  plugins: [
+    'react',
+    'react-hooks',
+    'prefer-arrow',
+    '@typescript-eslint',
+    'prettier'
+  ],
   settings: {
     react: {
       version: 'detect'
@@ -32,6 +43,15 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'no-undefined': 'error',
     'no-console': ['warn'],
-    'prettier/prettier': ['warn']
+    'prettier/prettier': ['error'],
+    'prefer-arrow/prefer-arrow-functions': [
+      'warn',
+      {
+        disallowPrototype: true,
+        singleReturnOnly: false,
+        classPropertiesAllowed: false,
+        allowStandaloneDeclarations: false
+      }
+    ]
   }
 };

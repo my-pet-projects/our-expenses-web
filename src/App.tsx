@@ -8,20 +8,11 @@ const App = (): JSX.Element => {
   const routeContent = useRoutes(routes(isLoggedIn));
 
   return (
-    <div className="flex flex-col h-screen justify-between">
+    <div className="flex flex-col min-h-screen">
       <nav className="bg-gray-800">
         <Navigation />
       </nav>
-      <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        </div>
-      </header>
-      <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 h-full">
-          {routeContent}
-        </div>
-      </main>
+      <main className="flex-grow">{routeContent}</main>
       <footer>
         <Footer />
       </footer>

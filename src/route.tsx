@@ -29,7 +29,7 @@ export const routes = (isLoggedIn?: boolean): RouteObject[] => [
         element: <Outlet />,
         children: [
           { path: '', element: <Category /> },
-          { path: ':id', element: <Category /> }
+          { path: ':categoryId', element: <Category /> }
         ]
       },
       {
